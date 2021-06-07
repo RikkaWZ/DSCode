@@ -1,6 +1,22 @@
 #include "stdlib.h"
 #include "stdio.h"
-#include "StaticSqList.h"
+
+#define MaxSize 50
+#define ElemType int
+
+// 静态分配
+typedef struct {
+    ElemType data[MaxSize];
+    int length;
+} SqList;
+
+void InitList(SqList &L) {
+    // 清除脏数据
+    for (int i = 0; i < MaxSize; i++) {
+        L.data[i] = 0;
+    }
+    L.length = 0;
+}
 
 bool ListInsert(SqList &L, int i, ElemType e) {
     // 判断 i 的范围是否有效
@@ -44,3 +60,6 @@ int LocateElem(SqList L, ElemType e) {
             return i + 1;
     return 0;
 }
+
+
+
