@@ -18,7 +18,7 @@ bool InitListWOHead(SinglyLinkList &L) {
 /**
  * 初始化一个空的单链表，带头结点
  */
-bool InitListWHead(SinglyLinkList &L) {
+bool InitList(SinglyLinkList &L) {
     L = (SLNode *)malloc(sizeof(SLNode));
     if (L == NULL)
         // 内存不足，分配失败
