@@ -137,26 +137,46 @@ bool InsertPriorNode(SLNode *p, ElemType e) {
     return true;
 }
 
+/**
+ * 按位序删除
+ * @param L 链表
+ * @param i 位序
+ * @param e 删除结点的值
+ */
+bool ListDelete(SinglyLinkList &L, int i, ElemType &e) {
+    if (i < 1)
+        return false;
+    SLNode *p;
+    int j = 0;
+    p = L;
+    while (p != NULL && j < i - 1) {
+        // 找到第 i - 1 个结点
+        p = p->next;
+        j++;
+    }
+    if (p == NULL)
+        // i 值不合法
+        return false;
+    if (p -> next == NULL)
+        // 第 i - 1 个结点后已无其他结点
+        return false;
+    SLNode *q = p->next; // 被删除结点
+    e = q->data; // 用 e 返回删除结点的值
+    p->next = q->next; // 断链
+    free(q);
+    return true;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * 指定结点的删除
+ * @param p 要删除结点的前驱结点，其不能是最后一个结点
+ */
+bool DeleteNode(SLNode *p) {
+    if (p == NULL)
+        return false;
+    SLNode *q = p->next; // 被删除结点
+    p->data = p->next->data; // 用 e 返回删除结点的值
+    p->next = q->next; // 断链
+    free(q);
+    return true;
+}
