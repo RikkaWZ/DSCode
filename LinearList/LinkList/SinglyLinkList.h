@@ -10,6 +10,8 @@ typedef struct SLNode {
 
 bool InsertNextNode(SLNode *pNode, int e);
 
+SLNode *GetElem(SinglyLinkList &pNode, int i);
+
 /**
  * 初始化一个空的单链表，不带头结点
  */
@@ -56,20 +58,8 @@ SinglyLinkList List_HeadInsert(SinglyLinkList &L) {
 bool ListInsert(SinglyLinkList &L, int i, ElemType e) {
     if (i < 1)
         return false;
-    SLNode *p;
-    int j = 0;
-    p = L;
-    while (p != NULL && j < i - 1) {
-        p = p->next;
-        j++;
-    }
-    if (p == NULL)
-        return false;
-    SLNode *s = (SLNode *) malloc(sizeof(SLNode));
-    s->data = e;
-    s->next = p->next;
-    p->next = s;
-    return true;
+    SLNode *p = GetElem(L, i - 1);
+    return InsertNextNode(p, e);
 }
 
 /**
@@ -146,18 +136,11 @@ bool InsertPriorNode(SLNode *p, ElemType e) {
 bool ListDelete(SinglyLinkList &L, int i, ElemType &e) {
     if (i < 1)
         return false;
-    SLNode *p;
-    int j = 0;
-    p = L;
-    while (p != NULL && j < i - 1) {
-        // 找到第 i - 1 个结点
-        p = p->next;
-        j++;
-    }
+    SLNode *p = GetElem(L, i - 1);
     if (p == NULL)
         // i 值不合法
         return false;
-    if (p -> next == NULL)
+    if (p->next == NULL)
         // 第 i - 1 个结点后已无其他结点
         return false;
     SLNode *q = p->next; // 被删除结点
@@ -180,3 +163,70 @@ bool DeleteNode(SLNode *p) {
     free(q);
     return true;
 }
+
+/**
+ * 按位查找，返回第 i 个元素
+ * @param L 链表
+ * @param i  位序
+ */
+SLNode *GetElem(SinglyLinkList L, int i) {
+    if (i < 0)
+        return NULL;
+    SLNode *p;
+    int j = 0;
+    p = L;
+    // 循环找到第 i 个结点
+    while (p != NULL && j < i) {
+        p = p->next;
+        j++;
+    }
+    return p;
+}
+
+/**
+ * 按值查找
+ * @param L 链表
+ * @param e 要查询的值
+ */
+SLNode *LocateElem(SinglyLinkList L, ElemType e) {
+    SLNode *p = L->next;
+    while (p != NULL && p->data != e)
+        p = p->next;
+    return p;
+}
+
+/**
+ * 求链表的长度
+ * @param L 链表
+ */
+int Length(SinglyLinkList L) {
+    int len = 0;
+    SLNode *p = L;
+    while (p->next != NULL) {
+        p = p->next;
+        len++;
+    }
+    return len;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
