@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #define InitSize 10
 #define ElemType int
 
