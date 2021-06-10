@@ -40,6 +40,7 @@ SinglyLinkList List_HeadInsert(SinglyLinkList &L) {
     int x = 0;
     L = (SinglyLinkList) malloc(sizeof(SLNode));
     L->next = NULL;
+    scanf("%d", &x);
     while (x != 9999) {
         s = (SLNode *) malloc(sizeof(SLNode));
         s->data = x;
@@ -47,6 +48,26 @@ SinglyLinkList List_HeadInsert(SinglyLinkList &L) {
         L->next = s;
         scanf("%d", &x);
     }
+    return L;
+}
+
+/**
+ * 尾插法建立单链表
+ */
+SinglyLinkList List_TailInsert(SinglyLinkList &L) {
+    int x = 0;
+    L = (SinglyLinkList) malloc(sizeof(SLNode));
+    SLNode *s;
+    SLNode *r = L;
+    scanf("%d", &x);
+    while (x != 9999) {
+        s = (SLNode *) malloc(sizeof(SLNode));
+        s->data = x;
+        r->next = s;
+        r = s;
+        scanf("%d", &x);
+    }
+    r->next = NULL;
     return L;
 }
 
