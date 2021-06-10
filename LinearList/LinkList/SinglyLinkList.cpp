@@ -1,7 +1,7 @@
 #include "SinglyLinkList.h"
 
 int main() {
-    SinglyLinkList L;
+    SLinkList L;
     InitListWOHead(L);
     printf("a");
 }
