@@ -26,6 +26,25 @@ int regularMatch(SString S, SString T) {
         return 0;
 }
 
+/**
+ * KMP 算法模式匹配
+ */
+int KMPMatch(SString S, SString T, int next[]) {
+    int i = 1;
+    int j = 1;
+    while (i <= S.length && j < T.length) {
+        if (j == 0 || S.ch[i] == T.ch[j]) {
+            i++;
+            j++;
+        } else {
+            j = next[j];
+        }
+    }
+    if (j > T.length)
+        return i - T.length;
+    else
+        return 0;
+}
 
 
 
