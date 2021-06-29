@@ -24,3 +24,20 @@ void CreatePostThread(ThreadTree T) {
         }
     }
 }
+
+/**
+ * 找到结点的前驱结点
+ */
+ThreadNode *NextNode(ThreadNode *p) {
+    // 怀疑王道的课这里讲错了
+    if (p->rTag == 0) {
+        // 有右孩子
+        if (p->lTag == 0)
+            return p->lChild;
+        else
+            return p->rChild;
+    } else {
+        // 没右孩子，返回后继线索
+        return p->rChild;
+    }
+}

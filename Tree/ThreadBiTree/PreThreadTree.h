@@ -24,3 +24,17 @@ void CreatePreThread(ThreadTree T) {
         }
     }
 }
+
+/**
+ * 找到结点的前驱结点
+ */
+ThreadNode *PreNode(ThreadNode *p) {
+    if (p->ltag == 0) {
+        if (p->rtag == 0)
+            return p->rchild;
+        else
+            return	p->lchild;
+    }
+    else
+        return p->lchild;
+}
