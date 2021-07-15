@@ -21,7 +21,7 @@ void InitQueue(SqQueue &Q) {
 /**
  * 判断队列是否为空
  */
-bool QueueEmpty(SqQueue Q) {
+bool IsEmpty(SqQueue Q) {
     if (Q.front == Q.rear)
         return true;
     else
