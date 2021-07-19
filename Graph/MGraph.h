@@ -1,5 +1,5 @@
 #define MaxVertexNum 100
-// #define INFINITY 25555? 表示网的时候用
+#define INFINITY 25555 // 表示网的时候用
 
 /**
  * 邻接矩阵法存储图
