@@ -1,4 +1,4 @@
-#define ElemType char
+#define ElemType int
 #define MaxSize 10
 
 /**
@@ -19,7 +19,7 @@ void InitStack(SqStack &S) {
 /**
  * 判断栈是否为空
  */
-bool StackEmpty(SqStack S) {
+bool IsEmpty(SqStack S) {
     if (S.top == -1)
         return true;
     else
@@ -41,7 +41,7 @@ bool Push(SqStack &S, ElemType x) {
  * 出栈
  */
 bool Pop(SqStack &S, ElemType &x) {
-    if (StackEmpty(S))
+    if (IsEmpty(S))
         return false;
     x = S.data[S.top--]; // 只是逻辑删除，内存中仍然存在
     return true;

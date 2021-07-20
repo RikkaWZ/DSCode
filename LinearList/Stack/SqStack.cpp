@@ -11,7 +11,7 @@ bool bracketCheck(char str[], int length) {
             // 扫描到左括号，入栈
             Push(S, str[i]);
         else {
-            if (StackEmpty(S))
+            if (IsEmpty(S))
                 return false;
             char topElem;
             Pop(S, topElem);
@@ -23,5 +23,5 @@ bool bracketCheck(char str[], int length) {
                 return false;
         }
     }
-    return StackEmpty(S);
+    return IsEmpty(S);
 }
