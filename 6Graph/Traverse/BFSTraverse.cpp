@@ -1,5 +1,5 @@
 #include "../MGraph.h"
-#include "../../LinearList/Queue/SqQueue.h"
+#include "../../3SnQ/Queue/SqQueue.h"
 
 /**
  * 广度优先遍历

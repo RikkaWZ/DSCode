@@ -1,5 +1,5 @@
 #include "ALGraph.h"
-#include "../LinearList/Stack/SqStack.h"
+#include "../3SnQ/Stack/SqStack.h"
 
 /**
  * 拓扑排序
